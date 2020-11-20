@@ -1,0 +1,53 @@
+
+
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <img
+    width="40"
+    alt="Bobcat Logo"
+    src="https://marketing.ucmerced.edu/sites/marketing.ucmerced.edu/files/images/secondary-mascot-head-embroidery-1200x1200.png"
+  />
+  <span>{{title}}</span>
+</div>
+
+<div class="content" role="main">
+  <!-- Car selector -->
+  <h2>Select a Car</h2>
+  <p>What do you want to do next with your app?</p>
+
+  <input type="hidden" #selection>
+
+  <div class="card-container">
+    <div class="card card-small" (click)="selection.value = 'economy'" tabindex="0">
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+
+      <span>Economy</span>
+    </div>
+
+    <div class="card card-small" (click)="selection.value = 'compact'" tabindex="0">
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+
+      <span>Compact</span>
+    </div>
+
+    <div class="card card-small" (click)="selection.value = 'standard'" tabindex="0">
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+
+      <span>Standard</span>
+    </div>
+
+    <div class="card card-small" (click)="selection.value = 'luxury'" tabindex="0">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+
+    <span>Luxury</span>
+  </div>
+  </div>
+
+    <div class="car-details" [ngSwitch]="selection.value">
+      <app-car-details [rentalType]="'Economy'" [price]=30 [availability]="'12/01'" *ngSwitchDefault></app-car-details>
+      <app-car-details [rentalType]="'Small'" [price]=45 [availability]="'12/01'" *ngSwitchCase="'compact'"></app-car-details>
+      <app-car-details [rentalType]="'Standard'" [price]=60 [availability]="'12/02'" *ngSwitchCase="'standard'"></app-car-details>
+      <app-car-details [rentalType]="'Luxury'" [price]=90 [availability]="'12/02'" *ngSwitchCase="'luxury'"></app-car-details>
+  </div>
+
+</div>
